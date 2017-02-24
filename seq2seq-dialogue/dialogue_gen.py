@@ -240,7 +240,6 @@ def train():
                 # sys.stdout.flush()
 
 
-
 def decode():
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
@@ -258,7 +257,7 @@ def decode():
         # Decode from standard input.
         sys.stdout.write("> ")
         sys.stdout.flush()
-        f_o=open(sys.stdin.readline(),'r')
+        f_o = open(sys.stdin.readline().strip(), 'r')
         sentence = f_o.readline()
         while sentence:
             # Get token-ids for the input sentence.
