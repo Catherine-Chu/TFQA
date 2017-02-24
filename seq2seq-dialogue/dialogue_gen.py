@@ -258,7 +258,8 @@ def decode():
         # Decode from standard input.
         sys.stdout.write("> ")
         sys.stdout.flush()
-        sentence = sys.stdin.readline()
+        f_o=open(sys.stdin.readline(),'r')
+        sentence = f_o.readline()
         while sentence:
             # Get token-ids for the input sentence.
             token_ids = data_utils.sentence_to_token_ids(tf.compat.as_bytes(sentence), qa_vocab)
@@ -284,9 +285,8 @@ def decode():
                 outputs = outputs[:outputs.index(data_utils.EOS_ID)]
             # Print out French sentence corresponding to outputs.
             print(" ".join([tf.compat.as_str(rev_qa_vocab[output]) for output in outputs]))
-            print("> ", end="")
             sys.stdout.flush()
-            sentence = sys.stdin.readline()
+            sentence = f_o.readline()
 
 
 def self_test():
